@@ -5,10 +5,9 @@ function Header() {
     <header className={styles.header}>
       <nav className={`${styles.nav} section-container`}>
         <a href="/" className={styles.logo}>
-          {/* Si tuvieras logo-sumadots.svg en /public/
-          <img src="/logo-sumadots.svg" alt="SumaDots Logo" /> 
-          */}
-          <strong>SumaDots</strong>
+          {//Si tuvieras logo-sumadots.svg en /public/
+          <img src="/suma-dots-logo-header.svg" alt="SumaDots Logo" /> 
+          }
         </a>
         <ul className={styles.menu}>
           <li><a href="#inicio">Inicio</a></li>
