@@ -1,19 +1,14 @@
 # ----- Etapa 1: Construcción (Build Stage) -----
 FROM node:20-alpine AS build
 
-# Declara el argumento de build que recibiremos de cloudbuild.yaml
-ARG VITE_API_URL
-
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
 
-# Crea el archivo .env.production DENTRO del contenedor.
-# Vite lo leerá automáticamente al hacer el build.
-RUN echo "VITE_API_URL=${VITE_API_URL}" > .env.production
+# No se necesita .env.production si no hay variables de entorno
+# La variable VITE_API_URL fue eliminada de aquí
 
-# Ahora, cuando se ejecute build, VITE_API_URL existirá
 RUN npm run build
 
 # ----- Etapa 2: Servicio (Serve Stage) -----
