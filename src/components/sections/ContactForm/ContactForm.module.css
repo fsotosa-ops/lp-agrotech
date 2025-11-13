@@ -1,0 +1,242 @@
+/* Estilos de sección */
+.section {
+    background-color: var(--color-bg-gray); /* Fondo gris claro */
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-dark);
+  }
+  
+  .subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    margin-bottom: 3rem;
+  }
+  
+  /* Estilos de formulario (Adaptados a TEMA CLARO) */
+  .contactForm {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--color-bg-light); /* Fondo blanco para el form */
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    border: 1px solid #e5e7eb;
+  }
+  
+  .formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  
+  .formGroup {
+    margin-bottom: 0;
+  }
+  
+  .formGroup.fullWidth {
+    grid-column: 1 / -1;
+  }
+  
+  .formGroup label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--color-text-dark);
+  }
+  
+  /* Estilos para inputs (TEMA CLARO) */
+  .formGroup input,
+  .formGroup textarea,
+  .formGroup select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #D1D5DB; /* Borde gris */
+    border-radius: 8px; /* Redondeo de 8px */
+    font-size: 1rem;
+    font-family: inherit;
+    box-sizing: border-box;
+    background-color: var(--color-bg-light); /* Fondo blanco */
+    color: var(--color-text-dark); /* Texto oscuro */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .formGroup input,
+  .formGroup select {
+    height: 48px; 
+  }
+  
+  .formGroup input:focus,
+  .formGroup textarea:focus,
+  .formGroup select:focus {
+    outline: none;
+    border-color: var(--color-primary); /* Resalte Morado */
+    box-shadow: 0 0 0 3px rgba(127, 86, 217, 0.3);
+  }
+  
+  .formGroup textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  /* Botón de Envío (Estilo SumaDots) */
+  .ctaButton {
+    background: var(--gradient-cta-bg);
+    color: var(--color-text-light);
+    border-radius: 10px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  .ctaButton:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  }
+  
+  .submitButton {
+    width: 100%;
+    cursor: pointer;
+    padding: 16px 36px;
+    font-size: 1.1rem;
+    border-radius: 50px; /* Estilo píldora */
+  }
+  .submitButton:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  /* === INICIO: Estilos para PhoneInput (TEMA CLARO - SEPARADO) === */
+  
+  /* El contenedor principal que dimos por <PhoneInput className={...}> */
+  .phoneInputContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre la bandera y el input */
+    height: 48px;
+    width: 100%;
+  }
+  
+  /* El input del número */
+  .phoneInputContainer .PhoneInputInput {
+    height: 100%;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #D1D5DB; /* Borde gris claro */
+    border-radius: 8px;
+    background-color: var(--color-bg-light); /* Fondo blanco */
+    color: var(--color-text-dark); /* Texto oscuro */
+    font-size: 1rem;
+    font-family: inherit;
+    box-sizing: border-box; 
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* La caja del selector de país (bandera) */
+  .phoneInputContainer .PhoneInputCountry {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 12px;
+    border: 1px solid #D1D5DB; /* Borde gris claro */
+    border-radius: 8px;
+    background-color: var(--color-bg-light); /* Fondo blanco */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* Hovers (adaptados a TEMA CLARO) */
+  .phoneInputContainer .PhoneInputCountry:hover {
+    border-color: #9CA3AF; /* Un gris más oscuro */
+  }
+  
+  /* Ocultar el código de país (+56) al lado de la bandera */
+  .phoneInputContainer .PhoneInputCountryCallingCode {
+    display: none;
+  }
+  
+  /* Estilo de la flecha */
+  .phoneInputContainer .PhoneInputCountrySelectArrow {
+    color: var(--color-text-muted); 
+  }
+  
+  /* Efecto focus morado (igual que los otros inputs) */
+  .phoneInputContainer .PhoneInputInput:focus,
+  .phoneInputContainer .PhoneInputCountry[aria-expanded="true"] {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(127, 86, 217, 0.3);
+  }
+  
+  /* === FIN: Estilos para PhoneInput === */
+  
+  
+  /* Estilos de Modal (TEMA CLARO) */
+  .modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(18, 18, 18, 0.85); /* Fondo oscuro translúcido */
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  .modalContentBox {
+    position: relative;
+    max-width: 600px;
+    width: 90%;
+    padding: 40px;
+    background: var(--color-bg-light); /* Fondo blanco */
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    text-align: center;
+  }
+  .modalContentBox .title {
+    color: var(--color-text-dark); /* Texto oscuro */
+  }
+  .modalContentBox .subtitle {
+    color: var(--color-text-muted); /* Texto gris */
+  }
+  .modalCloseButton {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: color 0.3s ease;
+    line-height: 1;
+  }
+  .modalCloseButton:hover {
+    color: var(--color-text-dark);
+  }
+  .successIcon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+  }
+  .errorMessage {
+    color: #ef4444;
+    text-align: center;
+  }
+  
+  /* Responsividad del grid */
+  @media (max-width: 768px) {
+    .formGrid {
+      grid-template-columns: 1fr;
+    }
+  }

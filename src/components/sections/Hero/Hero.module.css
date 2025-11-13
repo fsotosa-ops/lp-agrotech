@@ -16,7 +16,7 @@
   
   /* --- Columna de Contenido --- */
   .content {
-    flex: 1;
+    flex: 1; /* Mantenemos el flex del contenido */
     animation: slideInFromLeft 0.8s ease-out;
     z-index: 5; 
   }
@@ -34,23 +34,22 @@
     max-width: 500px;
   }
   
-  /* --- Columna del Video (Simplificada) --- */
+  /* --- Columna del Video (Modificada) --- */
   .videoWrapper {
-    flex: 1.1; /* Damos un poco más de espacio al video */
+    /* === CAMBIO: Aumentado de 1.1 a 1.3 === */
+    flex: 1.3; /* Damos más espacio relativo al video */
     display: flex;
     justify-content: center;
     align-items: center;
     animation: slideInFromRight 0.8s ease-out;
   }
   
-  /* Estilo para tu video */
+  /* Estilo para tu video (Modificado) */
   .heroVideo {
     width: 100%;
-    max-width: 700px; /* Controla el tamaño máximo */
-    height: auto; /* Mantiene la proporción del video */
-    
-    /* Ya no necesitamos 'position: absolute', 'top', 'left', etc.
-       porque el mockup ES el video. */
+    /* === CAMBIO: Aumentado de 700px a 800px === */
+    max-width: 800px; /* Controla el tamaño máximo */
+    height: auto; 
   }
   
   
@@ -79,6 +78,21 @@
     }
     .videoWrapper {
       width: 90%;
-      max-width: 600px;
+      /* === CAMBIO: Aumentado de 600px a 700px === */
+      max-width: 700px; /* Tamaño máximo en tablet/móvil */
     }
+  }
+
+  /* === AJUSTE DEL BOTÓN HERO (Estilo Píldora) === */
+  /* (Asegúrate de que este bloque esté al final) */
+  .content button {
+    padding: 1rem 2.25rem; 
+    font-size: 1.1rem;
+    border-radius: 50px; 
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+  .content button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 25px rgba(127, 86, 217, 0.5); 
   }

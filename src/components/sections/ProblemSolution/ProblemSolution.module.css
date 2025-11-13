@@ -9,26 +9,44 @@
     margin-bottom: 3rem;
     font-size: 1.1rem;
   }
+  
+  /* === CAMBIO: Grid de 2 columnas === */
   .grid {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
+    grid-template-columns: 1fr 1fr; /* -> De 3 columnas a 2 */
+    align-items: stretch; /* -> Hace que las tarjetas tengan el mismo alto */
     gap: 2rem;
   }
+
   .boxProblem, .boxSolution {
     padding: 2.5rem 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-md);
     height: 100%;
-  }
-  .boxProblem {
     background: var(--color-bg-light);
+    transition: all 0.2s ease;
+  }
+
+  /* Borde rojo sutil para "Problema" */
+  .boxProblem {
     border: 1px solid var(--color-problem-icon-bg);
   }
+  /* Borde verde (o morado) sutil para "Solución" */
   .boxSolution {
-    background: var(--color-bg-light);
     border: 1px solid var(--color-solution-icon-bg);
   }
+
+  /* Efecto hover más profesional */
+  .boxProblem:hover, .boxSolution:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Hacemos que la tarjeta "Solución" resalte con el color primario en hover */
+  .boxSolution:hover {
+    border-color: var(--color-primary); /* -> Borde morado en hover */
+  }
+
   
   .boxProblem ul, .boxSolution ul {
     display: flex;
@@ -41,8 +59,9 @@
     font-size: 1.1rem;
     font-weight: 600;
   }
+  
+  /* === CAMBIO: Estilo de los iconos SVG === */
   .iconProblem, .iconSolution {
-    font-size: 1.2rem;
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -52,6 +71,13 @@
     margin-right: 1rem;
     flex-shrink: 0;
   }
+  
+  /* Estilo para el contenedor del SVG */
+  .iconProblem svg, .iconSolution svg {
+    width: 20px; /* Tamaño del icono SVG dentro del círculo */
+    height: 20px;
+  }
+  
   .iconProblem {
     background-color: var(--color-problem-icon-bg);
     color: var(--color-problem-icon);
@@ -60,11 +86,15 @@
     background-color: var(--color-solution-icon-bg);
     color: var(--color-solution-icon);
   }
+  
+  /* === CAMBIO: Clase de flechas eliminada === */
   .arrows {
-    display: flex;
-    flex-direction: column;
-    gap: 3.5rem;
-    font-size: 2rem;
-    color: var(--color-text-muted);
-    opacity: 0.6;
+    display: none; /* -> Ya no se muestra */
+  }
+
+  /* Media Query para móvil (apila las 2 columnas) */
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
   }

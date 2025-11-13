@@ -3,28 +3,38 @@
     border: 1px solid #e5e7eb; /* Borde gris claro */
     border-radius: var(--border-radius);
     padding: 2.5rem 2rem;
-    text-align: center;
+    text-align: center; /* -> Vuelve a estar centrado */
     box-shadow: var(--shadow-md);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
   
   .card:hover {
     transform: translateY(-8px);
     box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary); /* Borde morado en hover */
   }
   
   .iconWrapper {
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    margin: 0 auto 1.5rem auto;
+    margin: 0 auto 1.5rem auto; /* -> Vuelve a estar centrado */
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
+  /* === CAMBIO: Estilo para el SVG === */
   .icon {
-    font-size: 2rem; /* 32px */
+    display: flex; /* Ayuda a centrar el SVG */
+    justify-content: center;
+    align-items: center;
+  }
+
+  .icon svg {
+    width: 32px;  /* Tamaño del icono SVG */
+    height: 32px;
+    stroke: currentColor; /* El SVG hereda el 'color' del wrapper */
   }
   
   .title {
