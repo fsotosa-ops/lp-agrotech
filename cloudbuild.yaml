@@ -1,0 +1,50 @@
+steps:
+  # 1. Construir la imagen de Docker usando el Dockerfile
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/${_SERVICE_NAME}:${COMMIT_SHA}'
+      - '--build-arg'
+      - 'VITE_API_URL=${_VITE_API_URL}' # Pasa la variable al Dockerfile
+      - '.'
+
+  # 2. Subir la imagen a Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/${_SERVICE_NAME}:${COMMIT_SHA}'
+
+  # 3. Desplegar la imagen en Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - '${_SERVICE_NAME}' # El nombre de tu servicio en Cloud Run
+      - '--image'
+      - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/${_SERVICE_NAME}:${COMMIT_SHA}'
+      - '--region'
+      - '${_REGION}'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated' # ¡Importante para que el sitio sea público!
+
+# Guardamos la imagen en Artifact Registry
+images:
+  - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/${_SERVICE_NAME}:${COMMIT_SHA}'
+
+# Variables de sustitución.
+substitutions:
+  # === CAMBIO IMPORTANTE ===
+  _SERVICE_NAME: 'lp-agrotech' # <- Actualiza esto al nombre de tu nuevo servicio
+  
+  _REGION: 'europe-west1' # (Puedes cambiar esto a tu región más cercana, ej: us-central1)
+  _REPO_NAME: 'cloud-run-source-deploy' # (El repositorio de Artifact Registry)
+  
+  # --- ¡IMPORTANTE! ---
+  # Define aquí la URL de la API a la que debe apuntar tu formulario de contacto.
+  _VITE_API_URL: 'https://tu-api-url.run.app'
+
+options:
+  logging: NONE
