@@ -1,0 +1,84 @@
+/* --- Estilos del Hero (Contenedor) --- */
+.hero {
+    background-color: var(--color-dark-bg);
+    color: var(--color-text-light);
+    padding: 2rem 0;
+    overflow: hidden;
+  }
+  .heroContainer {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding-top: 4rem !important;
+    padding-bottom: 6rem !important;
+    min-height: 80vh; 
+  }
+  
+  /* --- Columna de Contenido --- */
+  .content {
+    flex: 1;
+    animation: slideInFromLeft 0.8s ease-out;
+    z-index: 5; 
+  }
+  .title {
+    font-size: 3.5rem; /* 56px */
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+  }
+  .subtitle {
+    font-size: 1.25rem; /* 20px */
+    color: #cdd6f4; 
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+  }
+  
+  /* --- Columna del Video (Simplificada) --- */
+  .videoWrapper {
+    flex: 1.1; /* Damos un poco más de espacio al video */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: slideInFromRight 0.8s ease-out;
+  }
+  
+  /* Estilo para tu video */
+  .heroVideo {
+    width: 100%;
+    max-width: 700px; /* Controla el tamaño máximo */
+    height: auto; /* Mantiene la proporción del video */
+    
+    /* Ya no necesitamos 'position: absolute', 'top', 'left', etc.
+       porque el mockup ES el video. */
+  }
+  
+  
+  /* --- Animaciones (sin cambios) --- */
+  @keyframes slideInFromLeft {
+    from { opacity: 0; transform: translateX(-30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slideInFromRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  /* --- Media Queries (actualizado .videoWrapper) --- */
+  @media (max-width: 992px) {
+    .heroContainer {
+      flex-direction: column;
+      text-align: center;
+      gap: 4rem;
+    }
+    .content {
+      align-items: center;
+    }
+    .title, .subtitle {
+      max-width: 100%;
+    }
+    .videoWrapper {
+      width: 90%;
+      max-width: 600px;
+    }
+  }

@@ -1,0 +1,37 @@
+.header {
+    background-color: var(--color-bg-light);
+    border-bottom: 1px solid #e5e7eb;
+    padding: 1.25rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+  }
+  .nav {
+    padding: 0 !important; /* Sobrescribe el padding de .section-container */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-size: 1.5rem; 
+    font-weight: 700; 
+    color: var(--color-text-dark); 
+    text-decoration: none;
+  }
+  .logo img { 
+    height: 30px; 
+  }
+  .menu {
+    display: flex;
+    gap: 2.5rem;
+  }
+  .menu a {
+    color: var(--color-text-muted);
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.2s;
+  }
+  .menu a:hover { 
+    color: var(--color-primary); 
+  }
