@@ -23,11 +23,11 @@ const IconGrowth = () => (
   </svg>
 );
 
-// --- DATOS (Sin cambios, son los resultados del servicio) ---
+// --- DATOS (Sin cambios) ---
 const roadmapData = [
   {
     solution: 'Anticipación de Riesgos',
-    problem: 'Riesgos Operativos Tardíos',
+    problem: 'Riesgos operativos tardíos',
     icon: <IconAnticipation />
   },
   {
@@ -36,8 +36,8 @@ const roadmapData = [
     icon: <IconAutomation />
   },
   {
-    solution: 'Datos Unificados y Fiables',
-    problem: 'Información Dispersa y poco confiable',
+    solution: 'Datos unificados y fiables',
+    problem: 'Información dispersa y poco confiable',
     icon: <IconAnalysis />
   },
   {
@@ -47,14 +47,15 @@ const roadmapData = [
   }
 ];
 
+
 function ProblemSolution() {
   
   return (
     <section className={`${styles.section} section-container`}>
       {/* --- TÍTULOS ACTUALIZADOS --- */}
-      <h2>De la Intuición a la Decisión Experta</h2>
+      <h2>De Problema a Poder con Suma</h2>
       <h3 className={styles.subtitle}>
-        Resultados y mejoras clave que logras con un socio experto en datos.
+        Resultados y mejoras clave que logras con Suma como tu socio experto.
       </h3>
       
       <div className={styles.roadmapContainer}>

@@ -55,14 +55,16 @@ function ContactForm() {
     <> 
       <section id="contact" className={`${styles.section} section-container`}>
         {/* --- TÍTULOS ACTUALIZADOS --- */}
-        <h2 className={styles.title}>Hablemos de tu Proyecto</h2>
+        <h2 className={styles.title}>Agenda una sesión con Suma</h2>
         <p className={styles.subtitle}>
-          Completa el formulario y agendemos una <strong>sesión de diagnóstico</strong> gratuita.
+          Completa el formulario y Suma analizará tu proyecto 
+          en una <strong>sesión de diagnóstico</strong> gratuita.
         </p>
           
         <form className={styles.contactForm} onSubmit={handleSubmit} ref={formRef}>
           <div className={styles.formGrid}>
             
+            {/* El formulario de segmentación (Viñas/Agrícolas) sigue siendo perfecto */}
             <div className={styles.formGroup}>
               <label htmlFor="rubro">Rubro de su organización</label>
               <select id="rubro" name="rubro" required
@@ -113,13 +115,14 @@ function ContactForm() {
               />
             </div>
               
+            {/* --- BOTÓN ACTUALIZADO --- */}
             <div className={`${styles.formGroup} ${styles.fullWidth}`}>
               <button 
                 type="submit" 
                 className={`${styles.ctaButton} ${styles.submitButton}`} 
                 disabled={isLoading}
               >
-                {isLoading ? 'Enviando...' : 'Solicitar Diagnóstico'}
+                {isLoading ? 'Enviando...' : 'Quiero mi diagnóstico con Suma'}
               </button>
             </div>
 
@@ -143,10 +146,10 @@ function ContactForm() {
               <circle cx="26" cy="26" r="25" fill="none" stroke="#28a745" strokeWidth="2"/>
               <path fill="none" stroke="#28a745" strokeWidth="3" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
             </svg>
-            <h2 className={styles.title}>¡Solicitud Recibida!</h2>
+            <h2 className={styles.title}>¡Suma ha recibido tus datos!</h2>
             <p className={styles.subtitle}>
-              Hemos recibido tus datos. Te contactaré a la brevedad 
-              para agendar tu sesión de diagnóstico.
+              Te contactaremos a la brevedad para agendar 
+              tu sesión de diagnóstico.
             </p>
           </div>
         </div>
