@@ -246,3 +246,20 @@
     transform: scale(1.02);
   }
 }
+/* --- AÑADIR AL FINAL DE LOS 3 ARCHIVOS CSS --- */
+
+.textGradientSuma {
+  /* Usamos un morado más claro (#A78BFA) y tu primario */
+  background: linear-gradient(90deg, #A78BFA 0%, #7F56D9 100%);
+  
+  /* Magia de CSS para aplicar el fondo solo al texto */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  
+  /* Un pequeño brillo extra */
+  filter: brightness(1.1);
+  
+  /* Asegura que se comporte bien dentro de un h1 o p */
+  display: inline;
+}

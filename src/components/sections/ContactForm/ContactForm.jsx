@@ -55,16 +55,16 @@ function ContactForm() {
     <> 
       <section id="contact" className={`${styles.section} section-container`}>
         {/* --- TÍTULOS ACTUALIZADOS --- */}
-        <h2 className={styles.title}>Agenda una sesión con Suma</h2>
+        <h2 className={styles.title}>¿Listo para empezar?</h2>
         <p className={styles.subtitle}>
-          Completa el formulario y Suma analizará tu proyecto 
-          en una <strong>sesión de diagnóstico</strong> gratuita.
+          Agenda tu <strong>diagnóstico gratuito</strong> y deja que <span className={styles.textGradientSuma}>Suma</span> 
+          te muestre tus próximas victorias.
         </p>
           
         <form className={styles.contactForm} onSubmit={handleSubmit} ref={formRef}>
           <div className={styles.formGrid}>
             
-            {/* El formulario de segmentación (Viñas/Agrícolas) sigue siendo perfecto */}
+            {/* Campos del formulario (sin cambios en la lógica) */}
             <div className={styles.formGroup}>
               <label htmlFor="rubro">Rubro de su organización</label>
               <select id="rubro" name="rubro" required
@@ -115,7 +115,7 @@ function ContactForm() {
               />
             </div>
               
-            {/* --- BOTÓN ACTUALIZADO --- */}
+            {/* --- BOTÓN (Sin gradiente de texto para no chocar con fondo) --- */}
             <div className={`${styles.formGroup} ${styles.fullWidth}`}>
               <button 
                 type="submit" 
@@ -146,7 +146,7 @@ function ContactForm() {
               <circle cx="26" cy="26" r="25" fill="none" stroke="#28a745" strokeWidth="2"/>
               <path fill="none" stroke="#28a745" strokeWidth="3" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
             </svg>
-            <h2 className={styles.title}>¡Suma ha recibido tus datos!</h2>
+            <h2 className={styles.title}>¡<span className={styles.textGradientSuma}>Suma</span> ha recibido tus datos!</h2>
             <p className={styles.subtitle}>
               Te contactaremos a la brevedad para agendar 
               tu sesión de diagnóstico.

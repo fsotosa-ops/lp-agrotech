@@ -9,13 +9,13 @@ function Hero() {
         {/* --- Columna de Contenido (ACTUALIZADA) --- */}
         <div className={styles.content}>
           <h1 className={styles.title}>
-            Tu agro o viña necesita un experto.
-            Te presento a Suma.
+            Menos intuición.
+            Más rentabilidad.
           </h1>
           <p className={styles.subtitle}>
-            Suma es tu asesor experto en datos. Él se encarga de conectar 
-            la información, transformar la incertidumbre en rentabilidad 
-            y darte los insights para desbloquear el potencial de tu campo.
+            Soy <strong><span className={styles.textGradientSuma}>Suma</span></strong>, tu asesor experto en datos. No soy un software, 
+            soy tu socio. Conecto tu información y te entrego los 
+            insights que necesitas para ganar.
           </p>
           <Button>Empieza tu Transformación</Button>
         </div>
@@ -23,7 +23,6 @@ function Hero() {
         {/* --- Columna del Video (Sin cambios) --- */}
         <div className={styles.videoWrapper}>
           <video
-            // Esta es la ruta a tu nuevo video en la carpeta /public/
             src="/video-suma-agrotech.mp4"
             autoPlay
             loop

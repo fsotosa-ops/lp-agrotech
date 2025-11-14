@@ -1,6 +1,6 @@
 import styles from './ProblemSolution.module.css';
 
-// --- ÍCONOS (Sin cambios) ---
+// --- ÍCONOS (Tu código de SVGs va aquí) ---
 const IconAnticipation = () => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
@@ -27,7 +27,7 @@ const IconGrowth = () => (
 const roadmapData = [
   {
     solution: 'Anticipación de Riesgos',
-    problem: 'Riesgos operativos tardíos',
+    problem: 'Riesgos Operativos Tardíos',
     icon: <IconAnticipation />
   },
   {
@@ -36,8 +36,8 @@ const roadmapData = [
     icon: <IconAutomation />
   },
   {
-    solution: 'Datos unificados y fiables',
-    problem: 'Información dispersa y poco confiable',
+    solution: 'Datos Unificados y Fiables',
+    problem: 'Información Dispersa y poco confiable',
     icon: <IconAnalysis />
   },
   {
@@ -52,13 +52,14 @@ function ProblemSolution() {
   
   return (
     <section className={`${styles.section} section-container`}>
-      {/* --- TÍTULOS ACTUALIZADOS --- */}
-      <h2>De Problema a Poder con Suma</h2>
+      {/* --- TÍTULOS ACTUALIZADOS (Opción 2) --- */}
+      <h2>Aquí es donde <span className={styles.textGradientSuma}>Suma</span> hace la diferencia</h2>
       <h3 className={styles.subtitle}>
-        Resultados y mejoras clave que logras con Suma como tu socio experto.
+        Convertimos tus datos dispersos en decisiones proactivas y rentables.
       </h3>
       
       <div className={styles.roadmapContainer}>
+        {/* ... (resto del JSX sin cambios) ... */}
         <div className={styles.roadmapLine}></div>
         <div className={styles.roadmapItemsWrapper}>
           
