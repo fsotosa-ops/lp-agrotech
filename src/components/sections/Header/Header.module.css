@@ -1,37 +1,75 @@
 .header {
-    background-color: var(--color-bg-light);
-    border-bottom: 1px solid #e5e7eb;
-    padding: 1.25rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    width: 100%;
-  }
-  .nav {
-    padding: 0 !important; /* Sobrescribe el padding de .section-container */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .logo {
-    font-size: 1.5rem; 
-    font-weight: 700; 
-    color: var(--color-text-dark); 
-    text-decoration: none;
-  }
-  .logo img { 
-    height: 72px; 
-  }
-  .menu {
-    display: flex;
-    gap: 2.5rem;
-  }
-  .menu a {
-    color: var(--color-text-muted);
-    font-weight: 500;
-    font-size: 1rem;
-    transition: color 0.2s;
-  }
-  .menu a:hover { 
-    color: var(--color-primary); 
-  }
+  background-color: var(--color-bg-light);
+  border-bottom: 1px solid #e5e7eb;
+  padding: 1.25rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+}
+.nav {
+  padding: 0 !important; /* Sobrescribe el padding de .section-container */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 1.5rem; 
+  font-weight: 700; 
+  color: var(--color-text-dark); 
+  text-decoration: none;
+}
+.logo img { 
+  height: 72px; 
+}
+.menu {
+  display: flex;
+  gap: 2.5rem;
+}
+.menu a {
+  color: var(--color-text-muted);
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+.menu a:hover { 
+  color: var(--color-primary); 
+}
+
+
+/* --- INICIO: NUEVOS ESTILOS PARA EL BOTÓN CTA --- */
+
+/* Esto asegura que el <li> que contiene el botón 
+se alinee verticalmente con los otros links de texto ("Home", "Blog").
+*/
+.menu li {
+display: flex;
+align-items: center;
+}
+
+/* Esto anula los estilos de link (color, subrayado) 
+del <a> que envuelve al botón CTA.
+*/
+.ctaLink {
+color: unset;
+text-decoration: none;
+/* Sobrescribe los estilos de .menu a */
+font-weight: normal; 
+font-size: unset;
+}
+.ctaLink:hover {
+color: unset; /* Previene cambio de color en hover */
+}
+
+/* Esto hace que el botón dentro del header sea más pequeño
+para que se vea balanceado en la barra de navegación.
+*/
+.ctaLink button {
+padding: 0.5rem 1.25rem; /* Padding más pequeño */
+font-size: 0.95rem; /* Fuente ligeramente más pequeña */
+font-weight: 600; /* (Aseguramos el font-weight del botón) */
+
+/* --- CAMBIO AÑADIDO --- */
+border-radius: 50px; /* <-- Esta es la línea que añade la forma ovalada */
+}
+/* --- FIN: NUEVOS ESTILOS PARA EL BOTÓN CTA --- */

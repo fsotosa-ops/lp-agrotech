@@ -27,7 +27,7 @@ const IconGrowth = () => (
 const roadmapData = [
   {
     solution: 'Anticipación de Riesgos',
-    problem: 'Riesgos Operativos Tardíos',
+    problem: 'Riesgos operativos tardíos',
     icon: <IconAnticipation />
   },
   {
@@ -36,12 +36,12 @@ const roadmapData = [
     icon: <IconAutomation />
   },
   {
-    solution: 'Datos Unificados y Fiables',
-    problem: 'Información Dispersa y poco confiable',
+    solution: 'Datos unificados y fiables',
+    problem: 'Información dispersa y poco confiable',
     icon: <IconAnalysis />
   },
   {
-    solution: 'Optimización de Rentabilidad',
+    solution: 'Optimización de rentabilidad',
     problem: 'Costos ocultos y bajo rendimiento',
     icon: <IconGrowth />
   }
