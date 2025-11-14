@@ -1,100 +1,248 @@
+/* fsotosa-ops/lp-agrotech/lp-agrotech-e9c68edcb52ef6e076d84636da269a24fe8f5ec7/src/components/sections/ProblemSolution/ProblemSolution.module.css */
+
+/* --- Estilos base de la sección --- */
 .section {
-    background-color: var(--color-bg-gray);
-  }
-  .subtitle {
-    text-align: center;
-    font-weight: 500;
-    color: var(--color-text-muted);
-    margin-top: -2.5rem;
-    margin-bottom: 3rem;
-    font-size: 1.1rem;
-  }
-  
-  /* === CAMBIO: Grid de 2 columnas === */
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* -> De 3 columnas a 2 */
-    align-items: stretch; /* -> Hace que las tarjetas tengan el mismo alto */
-    gap: 2rem;
-  }
+  background-color: transparent; 
+}
+.subtitle {
+  text-align: center;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin-top: -2.5rem;
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
 
-  .boxProblem, .boxSolution {
-    padding: 2.5rem 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow-md);
+/* --- Layout de Roadmap Horizontal --- */
+.roadmapContainer {
+  position: relative;
+  width: 100%;
+  padding: 6rem 0;
+}
+.roadmapLine {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #e5e7eb;
+  z-index: 0;
+}
+
+/* 4 columnas de ancho igual */
+.roadmapItemsWrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 1.5rem; 
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* --- Item del Roadmap (Contenedor) --- */
+.roadmapItem {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+}
+.itemTop {
+  flex-direction: column-reverse;
+  padding-bottom: 30px;
+  margin-bottom: 40px;
+}
+.itemBottom {
+  flex-direction: column;
+  padding-top: 30px;
+  margin-top: 40px;
+}
+
+/* --- Punto en la línea --- */
+.timelineDot {
+  position: absolute;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #e5e7eb;
+  border: 4px solid var(--color-bg-light); 
+  z-index: 2;
+  transition: all 0.4s ease;
+}
+.itemTop .timelineDot { bottom: 0; transform: translate(-50%, 10px); }
+.itemBottom .timelineDot { top: 0; transform: translate(-50%, -10px); }
+
+/* Conector vertical */
+.timelineDot::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 30px;
+  background: #e5e7eb;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: background-color 0.4s ease;
+}
+.itemTop .timelineDot::before { top: -30px; }
+.itemBottom .timelineDot::before { bottom: -30px; }
+
+
+/* --- Caja Visible (Solución) --- */
+.contentBox {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: var(--color-bg-light);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  border: 2px solid #e5e7eb;
+  transition: all 0.4s ease;
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  min-height: 80px; 
+  box-sizing: border-box; 
+}
+.solutionText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  font-weight: 600;
+  /* === CAMBIO: Color Morado (look&feel) === */
+  color: var(--color-primary); 
+  text-align: center;
+}
+
+/* --- Caja de Hover (Problema) --- */
+.hoverBox {
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+.itemTop .hoverBox {
+  bottom: 100%;
+  margin-bottom: 10px;
+  transform: translateY(10px);
+}
+.itemBottom .hoverBox {
+  top: 100%;
+  margin-top: 10px;
+  transform: translateY(-10px);
+}
+.problemText {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-muted); /* Color gris (look&feel) */
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+/* --- Interacción de Hover --- */
+.roadmapItem:hover .contentBox {
+  border-color: var(--color-primary); 
+  transform: scale(1.05);
+}
+.roadmapItem:hover .timelineDot {
+  background-color: var(--color-primary);
+  box-shadow: 0 0 0 5px rgba(127, 86, 217, 0.3);
+}
+.roadmapItem:hover .timelineDot::before {
+  background-color: var(--color-primary);
+}
+.roadmapItem:hover .hoverBox {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+
+/* === CAMBIO: Estilo del Ícono (look&feel) === */
+.iconSolution {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: 0.5rem;
+  
+  /* Colores morados de tu marca */
+  background-color: var(--color-icon-purple); /* Fondo morado claro */
+  color: var(--color-primary); /* Ícono morado oscuro */
+}
+/* Estilo para los SVG que están adentro */
+.iconSolution svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2; /* Ajusta el grosor si es necesario */
+}
+
+
+/* --- Media Query para Móviles (Vertical) --- */
+@media (max-width: 900px) {
+  .roadmapContainer {
+    padding: 2rem 0;
+  }
+  .roadmapLine {
+    left: 20px;
+    transform: translateX(0);
+    top: 0;
+    bottom: 0;
+    width: 4px;
     height: 100%;
-    background: var(--color-bg-light);
-    transition: all 0.2s ease;
+    min-width: 0;
   }
-
-  /* Borde rojo sutil para "Problema" */
-  .boxProblem {
-    border: 1px solid var(--color-problem-icon-bg);
+  .roadmapItemsWrapper {
+    display: block; 
+    grid-template-columns: 1fr; 
+    gap: 0;
   }
-  /* Borde verde (o morado) sutil para "Solución" */
-  .boxSolution {
-    border: 1px solid var(--color-solution-icon-bg);
+  .roadmapItem {
+    width: 100%;
+    left: 0;
+    padding-left: 3.5rem;
+    padding-right: 1.5rem;
+    box-sizing: border-box;
+    margin: 0;
   }
-
-  /* Efecto hover más profesional */
-  .boxProblem:hover, .boxSolution:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-  }
-
-  /* Hacemos que la tarjeta "Solución" resalte con el color primario en hover */
-  .boxSolution:hover {
-    border-color: var(--color-primary); /* -> Borde morado en hover */
-  }
-
-  
-  .boxProblem ul, .boxSolution ul {
-    display: flex;
+  .itemTop, .itemBottom {
     flex-direction: column;
-    gap: 2rem;
+    padding: 0 0 2rem 0;
+    margin: 0;
   }
-  .boxProblem li, .boxSolution li {
-    display: flex;
-    align-items: center;
-    font-size: 1.1rem;
-    font-weight: 600;
+  .timelineDot {
+    left: 20px;
+    top: 20px;
+    transform: translate(-50%, 0);
   }
-  
-  /* === CAMBIO: Estilo de los iconos SVG === */
-  .iconProblem, .iconSolution {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 1rem;
-    flex-shrink: 0;
+  .itemTop .timelineDot, .itemBottom .timelineDot {
+    bottom: auto;
+    top: 20px;
+    transform: translate(-50%, 0);
   }
-  
-  /* Estilo para el contenedor del SVG */
-  .iconProblem svg, .iconSolution svg {
-    width: 20px; /* Tamaño del icono SVG dentro del círculo */
-    height: 20px;
+  .timelineDot::before {
+    display: none;
+  }
+  .contentBox {
+    margin-left: 10px;
+    width: auto;
+    min-height: 0; 
   }
   
-  .iconProblem {
-    background-color: var(--color-problem-icon-bg);
-    color: var(--color-problem-icon);
+  .hoverBox {
+    display: none; 
   }
-  .iconSolution {
-    background-color: var(--color-solution-icon-bg);
-    color: var(--color-solution-icon);
+  .roadmapItem:hover .contentBox {
+    transform: scale(1.02);
   }
-  
-  /* === CAMBIO: Clase de flechas eliminada === */
-  .arrows {
-    display: none; /* -> Ya no se muestra */
-  }
-
-  /* Media Query para móvil (apila las 2 columnas) */
-  @media (max-width: 768px) {
-    .grid {
-      grid-template-columns: 1fr;
-    }
-  }
+}

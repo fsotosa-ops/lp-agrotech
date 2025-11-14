@@ -18,7 +18,7 @@ function App() {
       <main>
         <Hero />
         <ProblemSolution />
-        <Results />
+        {/* <Results /> === 2. Añade el ContactForm aquí === */}
         {/* === 2. Añade el ContactForm aquí === */}
         <ContactForm />
       </main>
