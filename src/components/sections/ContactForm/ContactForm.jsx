@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css'; // Estilos base del input de teléfono
-import styles from './ContactForm.module.css'; // Usaremos CSS Modules
+import 'react-phone-number-input/style.css'; 
+import styles from './ContactForm.module.css';
 
 function ContactForm() {
   const [formData, setFormData] = useState({
@@ -36,10 +36,6 @@ function ContactForm() {
     };
     delete fullData.rubro_otro; 
 
-    // Aquí iría tu lógica de envío a la API (la he omitido por ahora)
-    // const apiUrl = import.meta.env.VITE_API_URL;
-    // ... fetch ...
-    
     // Simulación de envío exitoso
     setTimeout(() => {
       setIsLoading(false);
@@ -58,13 +54,15 @@ function ContactForm() {
   return (
     <> 
       <section id="contact" className={`${styles.section} section-container`}>
+        {/* --- TÍTULOS ACTUALIZADOS --- */}
         <h2 className={styles.title}>Hablemos de tu Proyecto</h2>
-        <p className={styles.subtitle}>Completa el formulario y te contactaremos.</p>
+        <p className={styles.subtitle}>
+          Completa el formulario y agendemos una <strong>sesión de diagnóstico</strong> gratuita.
+        </p>
           
         <form className={styles.contactForm} onSubmit={handleSubmit} ref={formRef}>
           <div className={styles.formGrid}>
             
-            {/* --- CAMPO RUBRO (SIMPLIFICADO) --- */}
             <div className={styles.formGroup}>
               <label htmlFor="rubro">Rubro de su organización</label>
               <select id="rubro" name="rubro" required
@@ -77,7 +75,6 @@ function ContactForm() {
               </select>
             </div>
 
-            {/* --- CAMPO CONDICIONAL "OTRO" --- */}
             {formData.rubro === 'otro' && (
               <div className={styles.formGroup}>
                 <label htmlFor="rubro_otro">Especifica tu rubro</label>
@@ -106,7 +103,6 @@ function ContactForm() {
 
             <div className={styles.formGroup}>
               <label htmlFor="phone">Teléfono</label>
-              {/* Este componente requiere CSS adaptado */}
               <PhoneInput
                 id="phone" name="phone" required
                 international
@@ -123,7 +119,7 @@ function ContactForm() {
                 className={`${styles.ctaButton} ${styles.submitButton}`} 
                 disabled={isLoading}
               >
-                {isLoading ? 'Enviando...' : 'Enviar Mensaje'}
+                {isLoading ? 'Enviando...' : 'Solicitar Diagnóstico'}
               </button>
             </div>
 
@@ -136,7 +132,7 @@ function ContactForm() {
         </form>
       </section>
 
-      {/* --- El POP-UP (Modal) de Éxito --- */}
+      {/* --- POP-UP (Modal) ACTUALIZADO --- */}
       {isSubmitted && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContentBox}>
@@ -147,9 +143,10 @@ function ContactForm() {
               <circle cx="26" cy="26" r="25" fill="none" stroke="#28a745" strokeWidth="2"/>
               <path fill="none" stroke="#28a745" strokeWidth="3" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
             </svg>
-            <h2 className={styles.title}>¡Mensaje Enviado!</h2>
+            <h2 className={styles.title}>¡Solicitud Recibida!</h2>
             <p className={styles.subtitle}>
-              Hemos recibido tus datos y te contactaremos a la brevedad.
+              Hemos recibido tus datos. Te contactaré a la brevedad 
+              para agendar tu sesión de diagnóstico.
             </p>
           </div>
         </div>
