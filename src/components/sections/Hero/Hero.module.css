@@ -113,3 +113,8 @@
   /* Asegura que se comporte bien dentro de un h1 o p */
   display: inline;
 }
+
+.heroCtaLink {
+  text-decoration: none;
+  color: unset;
+}

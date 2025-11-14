@@ -6,7 +6,7 @@ function Hero() {
     <section className={styles.hero}>
       <div className={`${styles.heroContainer} section-container`}>
         
-        {/* --- Columna de Contenido (ACTUALIZADA) --- */}
+        {/* --- Columna de Contenido --- */}
         <div className={styles.content}>
           <h1 className={styles.title}>
             Menos intuición.
@@ -17,10 +17,20 @@ function Hero() {
             soy tu socio. Conecto tu información y te entrego los 
             insights que necesitas para ganar.
           </p>
-          <Button>Empieza tu Transformación</Button>
+          
+          {/* --- CAMBIO AQUÍ --- */}
+          {/* El Botón ahora está envuelto en un link a Google Calendar */}
+          <a 
+            href="https://calendar.app.google/V63XytW1VbK9Vydm9" 
+            className={styles.heroCtaLink}
+            target="_blank" 
+            rel="noopener noreferrer"
+          >
+            <Button>Empieza tu Transformación</Button>
+          </a>
         </div>
         
-        {/* --- Columna del Video (Sin cambios) --- */}
+        {/* --- Columna del Video --- */}
         <div className={styles.videoWrapper}>
           <video
             src="/video-suma-agrotech.mp4"
