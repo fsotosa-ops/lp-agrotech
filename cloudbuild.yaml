@@ -1,11 +1,16 @@
 steps:
-  # 1. Construir la imagen de Docker (sin build-arg)
+  # 1. Construir la imagen de Docker
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
       - '-t'
       - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO_NAME}/${_SERVICE_NAME}:${COMMIT_SHA}'
-      - '.' # El argumento de VITE_API_URL fue eliminado
+      
+      # --- ¡CAMBIO AÑADIDO! ---
+      # 1. Pasa la variable _VITE_API_URL al build-arg VITE_API_URL del Dockerfile
+      - '--build-arg'
+      - 'VITE_API_URL=${_VITE_API_URL}'
+      - '.'
 
   # 2. Subir la imagen a Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
@@ -38,7 +43,10 @@ substitutions:
   _REGION: 'europe-west1' # (O tu región preferida, ej: us-central1)
   _REPO_NAME: 'cloud-run-source-deploy' 
   
-  # _VITE_API_URL eliminada
+  # --- ¡CAMBIO AÑADIDO! ---
+  # 2. Define la variable con la URL de tu backend
+  # (Esta es la URL que usa tu sitio principal)
+  _VITE_API_URL: 'https://sumadots-website-submitform-56755484181.europe-west1.run.app'
 
 options:
   logging: NONE

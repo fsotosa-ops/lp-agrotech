@@ -21,27 +21,61 @@ function ContactForm() {
     setFormData(prevData => ({ ...prevData, [name]: value }));
   };
 
+  // --- Lógica de Envío del Formulario (handleSubmit) ACTUALIZADA ---
   const handleSubmit = async (e) => {
     e.preventDefault(); 
     setIsLoading(true);
     setError(null);
     
+    // 1. Define el rubro final
     const rubroFinal = formData.rubro === 'otro' ? formData.rubro_otro : formData.rubro;
     
+    // 2. Lee la URL de la API desde las variables de entorno de Vite
+    const apiUrl = import.meta.env.VITE_API_URL;
+
+    // 3. Prepara los datos del formulario
     const fullData = {
-      ...formData,
+      proyecto: formData.proyecto,
       rubro: rubroFinal,
+      email: formData.email,
       phone: phoneValue,
-      source_url: window.location.href 
+      source_url: window.location.href, // URL de la landing page
+      
+      // Campos Fijos para que tu API los reconozca
+      servicio: 'LP Agrotech', // Para filtrarlo en Airtable
+      'digital-level': 'N/A (LP Agro)', // Placeholder
     };
+    
+    // No es necesario enviar esto a la API
     delete fullData.rubro_otro; 
 
-    // Simulación de envío exitoso
-    setTimeout(() => {
+    // 4. Lógica de envío real apuntando al endpoint /api/submit-form
+    try {
+      const response = await fetch(`${apiUrl}/api/submit-form`, { 
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(fullData),
+      });
+
+      if (!response.ok) {
+        // Captura errores del servidor (ej: 404, 500)
+        throw new Error('Hubo un problema al enviar tu mensaje. Inténtalo de nuevo.');
+      }
+
+      // Si todo sale bien
       setIsLoading(false);
-      setIsSubmitted(true); 
-    }, 1000);
+      setIsSubmitted(true); // Muestra el modal de éxito
+
+    } catch (err) {
+      // Captura errores de red (ej: no hay conexión)
+      setIsLoading(false);
+      setError(err.message); // Muestra el error en el formulario
+    }
   };
+  // --- Fin del handleSubmit ---
+
 
   const handleCloseModal = () => {
     setIsSubmitted(false);
@@ -54,7 +88,7 @@ function ContactForm() {
   return (
     <> 
       <section id="contact" className={`${styles.section} section-container`}>
-        {/* --- TÍTULOS ACTUALIZADOS --- */}
+        {/* --- Títulos llamativos --- */}
         <h2 className={styles.title}>¿Listo para empezar?</h2>
         <p className={styles.subtitle}>
           Agenda tu <strong>diagnóstico gratuito</strong> y deja que <span className={styles.textGradientSuma}>Suma</span> 
@@ -64,15 +98,15 @@ function ContactForm() {
         <form className={styles.contactForm} onSubmit={handleSubmit} ref={formRef}>
           <div className={styles.formGrid}>
             
-            {/* Campos del formulario (sin cambios en la lógica) */}
             <div className={styles.formGroup}>
               <label htmlFor="rubro">Rubro de su organización</label>
               <select id="rubro" name="rubro" required
                 value={formData.rubro} onChange={handleChange}
               >
                 <option value="">Seleccione un rubro...</option>
-                <option value="Sectores Agrícolas">Agrícola</option>
-                <option value="Viñas">Vitivinícola</option>
+                {/* Cambié las opciones de valor a algo más simple */}
+                <option value="Agrícola">Agrícola</option> 
+                <option value="Vitivinícola">Vitivinícola</option>
                 <option value="otro">Otro (especificar)</option>
               </select>
             </div>
@@ -115,7 +149,7 @@ function ContactForm() {
               />
             </div>
               
-            {/* --- BOTÓN (Sin gradiente de texto para no chocar con fondo) --- */}
+            {/* Botón con el copy llamativo */}
             <div className={`${styles.formGroup} ${styles.fullWidth}`}>
               <button 
                 type="submit" 
@@ -126,6 +160,7 @@ function ContactForm() {
               </button>
             </div>
 
+            {/* Muestra el error de red/servidor aquí */}
             {error && (
               <div className={`${styles.formGroup} ${styles.fullWidth} ${styles.errorMessage}`}>
                 {error}
@@ -135,7 +170,7 @@ function ContactForm() {
         </form>
       </section>
 
-      {/* --- POP-UP (Modal) ACTUALIZADO --- */}
+      {/* --- POP-UP (Modal) de Éxito --- */}
       {isSubmitted && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContentBox}>
