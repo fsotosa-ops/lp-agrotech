@@ -71,8 +71,8 @@ function ContactForm() {
                 value={formData.rubro} onChange={handleChange}
               >
                 <option value="">Seleccione un rubro...</option>
-                <option value="Sectores Agrícolas">Sectores Agrícolas</option>
-                <option value="Viñas">Viñas</option>
+                <option value="Sectores Agrícolas">Agrícola</option>
+                <option value="Viñas">Vitivinícola</option>
                 <option value="otro">Otro (especificar)</option>
               </select>
             </div>
