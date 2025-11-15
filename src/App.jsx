@@ -14,8 +14,7 @@ function App() {
     <>
       <Header />
       
-      {/* --- ESTE ES EL NUEVO BLOQUE BLANCO --- */}
-      <div className="header-cushion-block"></div>
+      {/* El bloque "colchón" ha sido eliminado */}
       
       <main>
         <Hero />
