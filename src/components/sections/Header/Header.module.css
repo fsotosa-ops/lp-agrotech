@@ -1,6 +1,8 @@
+/* --- HEADER CON FONDO OSCURO --- */
 .header {
-  background-color: var(--color-bg-light);
-  border-bottom: 1px solid #e5e7eb;
+  /* CAMBIO: Fondo oscuro (del hero) */
+  background-color: var(--color-dark-bg); 
+  border-bottom: 1px solid var(--color-border, #333); /* Borde oscuro */
   padding: 1.25rem 0;
   position: sticky;
   top: 0;
@@ -21,13 +23,12 @@
   align-items: center;
   flex-shrink: 0;
   
-  /* Solución de color de la última vez */
-  color: var(--color-primary);
+  /* CAMBIO: Quitamos el color morado. El logo SVG original 
+     es claro, así que se verá bien en fondo oscuro. */
+  color: unset; 
 }
 .logo img { 
-  /* --- CAMBIO AQUÍ --- */
-  /* Ajustado de 56px a 72px para igualar tu sitio principal */
-  height: 72px; 
+  height: 72px; /* Mantenemos el tamaño de 72px */
 }
 
 /* --- MENÚ VERSIÓN DESKTOP --- */
@@ -37,13 +38,16 @@
   gap: 2.5rem;
 }
 .menu a {
-  color: var(--color-text-muted);
+  /* CAMBIO: Texto del menú claro para fondo oscuro */
+  color: var(--color-text-light); 
   font-weight: 500;
   font-size: 1rem;
   transition: color 0.2s;
+  opacity: 0.8;
 }
 .menu a:hover { 
-  color: var(--color-primary); 
+  color: var(--color-primary); /* El morado resalta bien */
+  opacity: 1;
 }
 
 /* --- BOTÓN CTA (EN HEADER) --- */
@@ -60,16 +64,16 @@
 .ctaLink:hover {
   color: unset;
 }
+/* El botón morado resalta perfecto en fondo oscuro */
 .ctaLink button {
   padding: 0.5rem 1.25rem;
   font-size: 0.95rem;
   font-weight: 600;
-  border-radius: 50px; /* Forma de píldora */
+  border-radius: 50px;
 }
 
 /* --- LÓGICA RESPONSIVA (MÓVIL VERTICAL) --- */
 @media (max-width: 768px) {
-
   .nav {
     flex-direction: column;
     align-items: flex-start;
@@ -83,6 +87,11 @@
   }
   .menu li {
     width: 100%;
+  }
+  /* Los links en móvil también deben ser claros */
+  .menu a {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
   }
   .ctaLink {
     width: 100%;

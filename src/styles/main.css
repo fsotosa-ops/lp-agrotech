@@ -131,3 +131,19 @@
     height: 28px;
     fill: white;
   }
+
+ /* Bloque "colchón" entre header y hero */
+.header-cushion-block {
+  /* CAMBIO: Mismo fondo oscuro que el header y el hero */
+  background-color: var(--color-dark-bg); 
+  
+  /* CAMBIO: Reducimos la altura a 2rem (32px) */
+  height: 2rem; 
+}
+
+/* Ajuste para móvil (más pequeño) */
+@media (max-width: 768px) {
+  .header-cushion-block {
+    height: 1rem; /* 16px en móvil */
+  }
+}
