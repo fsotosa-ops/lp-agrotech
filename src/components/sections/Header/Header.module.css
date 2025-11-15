@@ -22,13 +22,13 @@
   flex-shrink: 0;
 }
 .logo img { 
-  height: 56px; /* Ajustado de 72px a 56px para mejor responsividad */
+  height: 56px; /* Mantenemos 56px, es bueno para móvil */
 }
 
 /* --- MENÚ VERSIÓN DESKTOP --- */
 .menu {
   display: flex;
-  align-items: center; /* Asegura alineación vertical */
+  align-items: center; 
   gap: 2.5rem;
 }
 .menu a {
@@ -62,71 +62,39 @@
   border-radius: 50px;
 }
 
-/* --- BOTÓN DE HAMBURGUESA (NUEVO) --- */
-.hamburgerButton {
-  display: none; /* Oculto en desktop */
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  color: var(--color-text-dark);
-  z-index: 102; /* Por encima del menú */
-}
-.hamburgerButton svg {
-  width: 32px;
-  height: 32px;
-}
+/* --- INICIO: LÓGICA RESPONSIVA (NUEVA) --- */
+/* Se activa en pantallas pequeñas (móviles y tablets verticales) */
+@media (max-width: 768px) {
 
-/* --- LÓGICA RESPONSIVA (MENÚ MÓVIL) --- */
-/* Usamos 900px como breakpoint, basado en ProblemSolution.module.css */
-@media (max-width: 900px) {
+  /* 1. Hacemos que el Nav (contenedor principal) sea vertical */
+  .nav {
+    flex-direction: column; /* Apila el logo y el menú */
+    align-items: flex-start; /* Alinea todo a la izquierda */
+    gap: 1.5rem; /* Espacio entre el logo y el primer item del menú */
+  }
 
-  /* 1. Ocultamos el menú de desktop */
+  /* 2. Hacemos que el Menú (la lista) también sea vertical */
   .menu {
-    display: none;
+    flex-direction: column; /* Apila "Home", "Blog" y el Botón */
+    align-items: flex-start; /* Alinea los items a la izquierda */
+    gap: 1.25rem; /* Espacio entre los items del menú */
+    width: 100%; /* Hace que el menú ocupe todo el ancho */
   }
 
-  /* 2. Mostramos el botón de hamburguesa */
-  .hamburgerButton {
-    display: block;
+  /* 3. Hacemos que cada item (li) ocupe todo el ancho */
+  .menu li {
+    width: 100%;
   }
 
-  /* 3. Estilos del menú cuando está abierto en móvil */
-  .menuOpen {
-    display: flex;
-    flex-direction: column; /* Apila los links verticalmente */
-    align-items: flex-start; /* Alinea a la izquierda */
-    gap: 1.5rem; /* Espacio entre links */
-    
-    /* Estilo del contenedor dropdown */
-    position: absolute;
-    top: 96px; /* Altura del header (56px logo + 20px padding-top + 20px padding-bottom) */
-    left: 0;
-    right: 0;
+  /* 4. Hacemos que el botón (y su link) ocupe todo el ancho */
+  .ctaLink {
     width: 100%;
-    
-    background-color: var(--color-bg-light);
-    padding: 2rem;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.05);
-    border-top: 1px solid #e5e7eb;
-    
-    /* Para que los items ocupen todo el ancho */
-    box-sizing: border-box; 
   }
 
-  /* 4. Estilos de los items del menú móvil */
-  .menuOpen li {
-    width: 100%;
-  }
-  .menuOpen li a {
-    font-size: 1.1rem; /* Fuente más grande para móvil */
-  }
-  .menuOpen .ctaLink {
-    width: 100%;
-  }
-  .menuOpen .ctaLink button {
-    width: 100%; /* Botón ocupa todo el ancho */
-    padding: 0.75rem 1.5rem; /* Botón más grande */
-    font-size: 1.1rem;
+  .ctaLink button {
+    width: 100%; /* El botón se expande */
+    font-size: 1.05rem; /* Letra un poco más grande */
+    padding: 0.75rem 1.5rem; /* Padding un poco más grande */
   }
 }
+/* --- FIN: LÓGICA RESPONSIVA --- */
