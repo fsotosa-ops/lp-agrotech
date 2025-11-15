@@ -1,7 +1,7 @@
 .header {
   background-color: var(--color-bg-light);
   border-bottom: 1px solid #e5e7eb;
-  padding: 1.25rem 0; /* 20px 0 */
+  padding: 1.25rem 0;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -20,13 +20,14 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
-
-  /* --- ¡ESTA ES LA LÍNEA DE LA SOLUCIÓN! --- */
-  /* Forzamos el color del <a> a morado. El SVG heredará este color. */
+  
+  /* Solución de color de la última vez */
   color: var(--color-primary);
 }
 .logo img { 
-  height: 56px; /* Ajustado de 72px a 56px para mejor responsividad */
+  /* --- CAMBIO AQUÍ --- */
+  /* Ajustado de 56px a 72px para igualar tu sitio principal */
+  height: 72px; 
 }
 
 /* --- MENÚ VERSIÓN DESKTOP --- */
@@ -63,41 +64,32 @@
   padding: 0.5rem 1.25rem;
   font-size: 0.95rem;
   font-weight: 600;
-  border-radius: 50px;
+  border-radius: 50px; /* Forma de píldora */
 }
 
 /* --- LÓGICA RESPONSIVA (MÓVIL VERTICAL) --- */
-/* Se activa en pantallas pequeñas (móviles y tablets verticales) */
 @media (max-width: 768px) {
 
-  /* 1. Hacemos que el Nav (contenedor principal) sea vertical */
   .nav {
-    flex-direction: column; /* Apila el logo y el menú */
-    align-items: flex-start; /* Alinea todo a la izquierda */
-    gap: 1.5rem; /* Espacio entre el logo y el primer item del menú */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
   }
-
-  /* 2. Hacemos que el Menú (la lista) también sea vertical */
   .menu {
-    flex-direction: column; /* Apila "Home", "Blog" y el Botón */
-    align-items: flex-start; /* Alinea los items a la izquierda */
-    gap: 1.25rem; /* Espacio entre los items del menú */
-    width: 100%; /* Hace que el menú ocupe todo el ancho */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    width: 100%;
   }
-
-  /* 3. Hacemos que cada item (li) ocupe todo el ancho */
   .menu li {
     width: 100%;
   }
-
-  /* 4. Hacemos que el botón (y su link) ocupe todo el ancho */
   .ctaLink {
     width: 100%;
   }
-
   .ctaLink button {
-    width: 100%; /* El botón se expande */
-    font-size: 1.05rem; /* Letra un poco más grande */
-    padding: 0.75rem 1.5rem; /* Padding un poco más grande */
+    width: 100%;
+    font-size: 1.05rem;
+    padding: 0.75rem 1.5rem;
   }
 }
