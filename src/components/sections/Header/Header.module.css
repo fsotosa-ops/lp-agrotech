@@ -1,7 +1,7 @@
 .header {
   background-color: var(--color-bg-light);
   border-bottom: 1px solid #e5e7eb;
-  padding: 1.25rem 0; /* 20px 0 */
+  padding: 1.25rem 0;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -20,9 +20,13 @@
   display: flex;
   align-items: center;
   flex-shrink: 0;
+
+  /* --- ¡LÍNEA AÑADIDA! --- */
+  /* Esto le dice al SVG que se pinte de morado */
+  color: var(--color-primary);
 }
 .logo img { 
-  height: 56px; /* Mantenemos 56px, es bueno para móvil */
+  height: 56px;
 }
 
 /* --- MENÚ VERSIÓN DESKTOP --- */
@@ -62,39 +66,28 @@
   border-radius: 50px;
 }
 
-/* --- INICIO: LÓGICA RESPONSIVA (NUEVA) --- */
-/* Se activa en pantallas pequeñas (móviles y tablets verticales) */
+/* --- LÓGICA RESPONSIVA (MÓVIL) --- */
 @media (max-width: 768px) {
-
-  /* 1. Hacemos que el Nav (contenedor principal) sea vertical */
   .nav {
-    flex-direction: column; /* Apila el logo y el menú */
-    align-items: flex-start; /* Alinea todo a la izquierda */
-    gap: 1.5rem; /* Espacio entre el logo y el primer item del menú */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
   }
-
-  /* 2. Hacemos que el Menú (la lista) también sea vertical */
   .menu {
-    flex-direction: column; /* Apila "Home", "Blog" y el Botón */
-    align-items: flex-start; /* Alinea los items a la izquierda */
-    gap: 1.25rem; /* Espacio entre los items del menú */
-    width: 100%; /* Hace que el menú ocupe todo el ancho */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    width: 100%;
   }
-
-  /* 3. Hacemos que cada item (li) ocupe todo el ancho */
   .menu li {
     width: 100%;
   }
-
-  /* 4. Hacemos que el botón (y su link) ocupe todo el ancho */
   .ctaLink {
     width: 100%;
   }
-
   .ctaLink button {
-    width: 100%; /* El botón se expande */
-    font-size: 1.05rem; /* Letra un poco más grande */
-    padding: 0.75rem 1.5rem; /* Padding un poco más grande */
+    width: 100%;
+    font-size: 1.05rem;
+    padding: 0.75rem 1.5rem;
   }
 }
-/* --- FIN: LÓGICA RESPONSIVA --- */
