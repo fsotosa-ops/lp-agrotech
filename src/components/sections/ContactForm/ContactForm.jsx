@@ -21,61 +21,44 @@ function ContactForm() {
     setFormData(prevData => ({ ...prevData, [name]: value }));
   };
 
-  // --- Lógica de Envío del Formulario (handleSubmit) ACTUALIZADA ---
+  // Lógica de envío a tu API/Airtable
   const handleSubmit = async (e) => {
     e.preventDefault(); 
     setIsLoading(true);
     setError(null);
     
-    // 1. Define el rubro final
     const rubroFinal = formData.rubro === 'otro' ? formData.rubro_otro : formData.rubro;
-    
-    // 2. Lee la URL de la API desde las variables de entorno de Vite
     const apiUrl = import.meta.env.VITE_API_URL;
 
-    // 3. Prepara los datos del formulario
     const fullData = {
       proyecto: formData.proyecto,
       rubro: rubroFinal,
       email: formData.email,
       phone: phoneValue,
-      source_url: window.location.href, // URL de la landing page
-      
-      // Campos Fijos para que tu API los reconozca
-      servicio: 'LP Agrotech', // Para filtrarlo en Airtable
-      'digital-level': 'N/A (LP Agro)', // Placeholder
+      source_url: window.location.href, 
+      servicio: 'LP Agrotech', 
+      'digital-level': 'N/A (LP Agro)',
     };
     
-    // No es necesario enviar esto a la API
     delete fullData.rubro_otro; 
 
-    // 4. Lógica de envío real apuntando al endpoint /api/submit-form
     try {
       const response = await fetch(`${apiUrl}/api/submit-form`, { 
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(fullData),
       });
 
       if (!response.ok) {
-        // Captura errores del servidor (ej: 404, 500)
         throw new Error('Hubo un problema al enviar tu mensaje. Inténtalo de nuevo.');
       }
-
-      // Si todo sale bien
       setIsLoading(false);
-      setIsSubmitted(true); // Muestra el modal de éxito
-
+      setIsSubmitted(true);
     } catch (err) {
-      // Captura errores de red (ej: no hay conexión)
       setIsLoading(false);
-      setError(err.message); // Muestra el error en el formulario
+      setError(err.message);
     }
   };
-  // --- Fin del handleSubmit ---
-
 
   const handleCloseModal = () => {
     setIsSubmitted(false);
@@ -88,11 +71,14 @@ function ContactForm() {
   return (
     <> 
       <section id="contact" className={`${styles.section} section-container`}>
-        {/* --- Títulos llamativos --- */}
-        <h2 className={styles.title}>¿Listo para empezar?</h2>
+        
+        {/* --- TÍTULOS ACTUALIZADOS --- */}
+        <h2 className={styles.title}>
+          Solicita tu Consultoría Gratuita
+        </h2>
         <p className={styles.subtitle}>
-          Agenda tu <strong>diagnóstico gratuito</strong> y deja que <span className={styles.textGradientSuma}>Suma</span> 
-          te muestre tus próximas victorias.
+          Completa tus datos. <span className={styles.textGradientSuma}>Suma</span> te contactará 
+          para tu <strong>diagnóstico de datos de 30 minutos</strong>, sin costo.
         </p>
           
         <form className={styles.contactForm} onSubmit={handleSubmit} ref={formRef}>
@@ -104,9 +90,9 @@ function ContactForm() {
                 value={formData.rubro} onChange={handleChange}
               >
                 <option value="">Seleccione un rubro...</option>
-                {/* Cambié las opciones de valor a algo más simple */}
                 <option value="Agrícola">Agrícola</option> 
                 <option value="Vitivinícola">Vitivinícola</option>
+                <option value="Cafetal">Cafetal</option>
                 <option value="otro">Otro (especificar)</option>
               </select>
             </div>
@@ -122,10 +108,10 @@ function ContactForm() {
             )}
 
             <div className={`${styles.formGroup} ${styles.fullWidth}`}>
-              <label htmlFor="proyecto">Cuéntanos brevemente tu proyecto</label>
+              <label htmlFor="proyecto">Describe tu desafío de datos</label>
               <textarea 
                 id="proyecto" name="proyecto" required 
-                placeholder="Describe tu desafío o el proyecto que tienes en mente..." 
+                placeholder="Ej: No puedo cruzar costos con datos de campo, o mis planillas de cosecha son un caos." 
                 value={formData.proyecto} onChange={handleChange}
               />
             </div>
@@ -149,18 +135,17 @@ function ContactForm() {
               />
             </div>
               
-            {/* Botón con el copy llamativo */}
+            {/* --- BOTÓN ACTUALIZADO --- */}
             <div className={`${styles.formGroup} ${styles.fullWidth}`}>
               <button 
                 type="submit" 
                 className={`${styles.ctaButton} ${styles.submitButton}`} 
                 disabled={isLoading}
               >
-                {isLoading ? 'Enviando...' : 'Quiero mi diagnóstico con Suma'}
+                {isLoading ? 'Enviando...' : 'Solicitar mi Consultoría'}
               </button>
             </div>
 
-            {/* Muestra el error de red/servidor aquí */}
             {error && (
               <div className={`${styles.formGroup} ${styles.fullWidth} ${styles.errorMessage}`}>
                 {error}
@@ -170,7 +155,7 @@ function ContactForm() {
         </form>
       </section>
 
-      {/* --- POP-UP (Modal) de Éxito --- */}
+      {/* --- POP-UP (Modal) ACTUALIZADO --- */}
       {isSubmitted && (
         <div className={styles.modalOverlay}>
           <div className={styles.modalContentBox}>
@@ -181,10 +166,10 @@ function ContactForm() {
               <circle cx="26" cy="26" r="25" fill="none" stroke="#28a745" strokeWidth="2"/>
               <path fill="none" stroke="#28a745" strokeWidth="3" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
             </svg>
-            <h2 className={styles.title}>¡<span className={styles.textGradientSuma}>Suma</span> ha recibido tus datos!</h2>
+            <h2 className={styles.title}>¡Solicitud Recibida!</h2>
             <p className={styles.subtitle}>
-              Te contactaremos a la brevedad para agendar 
-              tu sesión de diagnóstico.
+              <span className={styles.textGradientSuma}>Suma</span> ha recibido tus datos 
+              y te contactará a la brevedad.
             </p>
           </div>
         </div>
