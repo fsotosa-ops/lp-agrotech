@@ -32,7 +32,7 @@ function Hero() {
         {/* --- Columna del Video --- */}
         <div className={styles.videoWrapper}>
           <video
-            src="/video-suma-agrotech-2.mp4"
+            src="video-suma-agrotech-2.mp4"
             autoPlay
             loop
             muted

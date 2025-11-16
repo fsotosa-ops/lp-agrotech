@@ -16,7 +16,7 @@ function Header() {
           target="_blank" 
           rel="noopener noreferrer"
         >
-          <img src="/suma-dots-logo-header.svg" alt="SumaDots Logo" />
+          <img src="suma-dots-logo-header.svg" alt="SumaDots Logo" />
         </a>
 
         {/* El botón de hamburguesa ha sido eliminado */}
