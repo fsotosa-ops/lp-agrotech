@@ -6,7 +6,7 @@ import App from './App.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter basename="/agricolas-vinas">  {/* 2. Envolver App con el Router */}
+    <BrowserRouter basename="/agricolas-vinas"> 
       <App />
     </BrowserRouter>
   </StrictMode>,
